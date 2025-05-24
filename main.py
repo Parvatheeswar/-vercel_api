@@ -3,7 +3,15 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# Enable CORS for all domains
+# Sample marks data
+marks = {
+    "Alice": 10,
+    "Bob": 20,
+    "Charlie": 30,
+    "David": 40
+}
+
+# Enable CORS for any origin
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -11,13 +19,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Marks dictionary
-marks_data = {
-    "Alice": 10,
-    "Bob": 20,
-    "Charlie": 15
-}
-
 @app.get("/api")
-async def get_marks(name: list[str] = []):
-    return {"marks": [marks_data.get(n, 0) for n in name]}
+def get_marks(name: list[str] = []):
+    result = [marks.get(n, 0) for n in name]
+    return {"marks": result}
