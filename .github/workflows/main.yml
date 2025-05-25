@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: youremailaddresshere
+      - name: 24ds2000123@ds.study.iitm.ac.in
         run: echo "Hello, world!"
         
       - name: Display date
